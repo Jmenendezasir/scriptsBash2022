@@ -27,7 +27,6 @@ echo "#!/bin/bash" > $1
 echo "# Autor: $USER" >> $1
 echo "# Fecha: " `date +"%d/%m/%Y"` >> $1
 echo "# Descripción: $descripcion" >> $1
-chmod u+x $1
 echo "El script se ha creado satisfactoriamente..."
 sleep .5
 nano $1

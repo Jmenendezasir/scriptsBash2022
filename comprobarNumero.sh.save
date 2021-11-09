@@ -1,0 +1,17 @@
+#!/bin/bash
+# Autor: u-server
+# Fecha:  05/11/2021
+# Descripción: Comprobar si un numero es positivo o negativo
+
+clear
+
+read -p "Introduce un número... " NUM
+
+if [ $NUM -lt 0 ]
+then
+	echo "Es un número negativo"
+elif [ $NUM -gt 0 ]
+	echo "Es un número positivo"
+else
+	echo "Has intruducido 0, no es positivo ni negativo"
+fi

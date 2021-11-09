@@ -18,7 +18,7 @@ then
 	else
 		echo "Cancelando el proceso..."
 		sleep .5
-		exit
+		exit 1
 	fi
 else
 	echo "$FICHERO NO EXISTE"
@@ -30,6 +30,6 @@ else
 	else
 		echo "Cancelando el proceso..."
 		sleep .5
-		exit
+		exit 1
 	fi
 fi
