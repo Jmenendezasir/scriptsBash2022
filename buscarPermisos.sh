@@ -15,11 +15,11 @@ then
 		then
 			echo "$i ya tiene permisos concedidos."
 		else
-			sudo chmod u+x $i
+			chmod u+x $i
 			echo "Permiso concedido en $i"
 		fi
 	done
 else
-	echo "El directorio no contiene scripts"
+	echo "El directorio no contiene scripts o no existe."
 	exit 1
 fi
