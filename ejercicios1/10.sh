@@ -6,12 +6,12 @@ echo "--------------"
 echo " EJERCICIO 10 "
 echo "--------------"
 
-if [ $2 = "A" ]
+if [ $2 = "-A" ]
 then
 	sort $1
-elif [ $2 = "Z" ]
+elif [ $2 = "-Z" ]
 then
-	sort $1 -r
+	sort -r $1
 else
 	echo "No se ha pasado ningún parámetro de orden"
 fi
