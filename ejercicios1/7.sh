@@ -13,6 +13,9 @@ then
 elif [ -f $1 ]
 then
 	echo "$1 es un fichero"
+elif [ $1 = "/dev/null" ]
+then
+	echo "$1 es un fichero no regular"
 else
 	echo "$1 no existe..."
 fi
