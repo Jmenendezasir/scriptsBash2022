@@ -18,7 +18,7 @@ then
 	sleep .5
 	exit 0
 else
-	echo "El fichero $1 no existe, vamos a crearlo..."
+	echo "El directorio $1 no existe, vamos a crearlo..."
 	sleep .5
 	mkdir $1
 	echo ""
