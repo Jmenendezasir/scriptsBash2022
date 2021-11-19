@@ -16,3 +16,6 @@ marcos
 rocio
 juanan
 alberto
+pablo
+miguel
+pedro

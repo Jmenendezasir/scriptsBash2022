@@ -4,7 +4,7 @@
 # Descripción: Script usando el <<for>>
 clear
 
-verificar="false"
+verify=1
 read -p "Introduce un nombre... : " alumno
 echo ""
 
@@ -13,14 +13,14 @@ do
 	if [ $alumno = $i ]
 	then
 		echo -e "\e[0;32m* $i \e[0m"
-		verificar="true"
+		verify=0
 	else
 	echo "- $i"
 	sleep .05
 	fi
 done
 
-if [ $verificar = "true" ]
+if [ $verify -eq 0 ]
 then
 	echo ""
 	echo -e "\e[0;32m $alumno está dentro de la lista \e[0m"
