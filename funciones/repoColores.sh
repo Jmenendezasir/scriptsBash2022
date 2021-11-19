@@ -7,6 +7,11 @@ rojo() {
 verde() {
     echo -e "\e[0;32m"$1"\e[0m"
 }
+
+azul() {
+    echo -e "\e[0;34m"$1"\e[0m"
+}
+
 arcoiris() {
     echo -e "\e[0;32m"$1"\e[0m"
     sleep .1

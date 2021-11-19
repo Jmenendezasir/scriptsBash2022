@@ -16,4 +16,10 @@ case $2 in
     arcoiris)
         arcoiris $1
         ;;
+    azul)
+        azul $1
+        ;;
+        *)
+        echo -e "\e[0;31m"El color no existe o no está contemplado..."\e[0m"
+        ;;
 esac
