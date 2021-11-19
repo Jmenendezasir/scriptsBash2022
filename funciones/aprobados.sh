@@ -21,4 +21,9 @@ do
     fi
 done
 
-echo "hay $aprobados alumnos aprobados"
+if [ $aprobados -eq 1 ]
+then
+    echo "Hay un alumno aprobado..."
+else
+    echo "Hay $aprobados alumnos aprobados"
+fi
