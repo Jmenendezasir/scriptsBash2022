@@ -1,10 +1,11 @@
 #!/bin/bash
 # Autor: u-server
 # Fecha:  19/11/2021
-# Descripción: Pasar un listado de notas y determinar quién ha aprobado
+# Descripción: Pasar un listado de notas y determinar cuántos han aprobado
 
 clear
-aprobados=0
+aprobados(){
+local aprobados=0
 
 for i in $*
 do
@@ -27,3 +28,4 @@ then
 else
     echo "Hay $aprobados alumnos aprobados"
 fi
+}
