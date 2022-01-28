@@ -62,21 +62,6 @@ else
 fi
 
 echo "Creando las consultas SQL..."
-if [ -f ./usuarios.SQL ]
-then
-    echo "Existe un fichero previo de importación..."
-    amarillo "Eliminando..."
-    rm usuarios.SQL
-    amarillo "Creando..."
-    touch usuarios.SQL
-    verde "Se ha creado satisfactoriamente..."
-else
-    echo "No existe ningún fichero de importación"
-    amarillo "Creando..."
-    touch usuarios.SQL
-    verde "Se ha creado satisfactoriamente..."
-fi
-
 mysql -u usuario usuarios -e 'SELECT uid FROM usuarios' > consulta.SQL
 
 for fila in $(cat ./usuarios.txt)
