@@ -24,7 +24,7 @@ else
     if [ `which mysql` ]
     then
         echo "Creando la base de datos usuario..."
-        mysql -u usuario -e < MySQL.SQL
+        sudo mysql -u root -p -e < MySQL.SQL
         verde "MySQL se ha instalado satisfactoriamente..."
     else
         rojo "Ha ocurrido un error al instalar MySQL..."
@@ -92,6 +92,15 @@ do
         echo "Insertando a $usuarioSQL en la base de datos..."
         echo "INSERT INTO usuarios VALUES ('$uidSQL','$usuarioSQL','$grupoSQL');" > usuario.SQL
         mysql -u usuario usuarios < usuario.SQL
+
+        mysql -u usuario usuarios -e 'SELECT uid FROM usuarios' > consulta.SQL
+        if grep $uidSQL ./consulta.SQL > /dev/null
+        then
+            verde "El usuario $usuarioSQL se ha importado correctamente en la base de datos..."
+            amarillo "________"
+        else
+            rojo "Ha ocurrido un error al importar al usuario en la base de datos..."
+        fi
     fi
 done
 
