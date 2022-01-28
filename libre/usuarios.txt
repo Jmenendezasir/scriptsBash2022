@@ -27,5 +27,3 @@
 1026:esteban:etalonaje
 1027:pepe:sfx
 1028:victor:redaccion
-1029:roberto:roberto
-1030:gilberto:gilberto

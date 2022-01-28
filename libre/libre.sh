@@ -23,6 +23,8 @@ else
     sudo apt-get install -y mysql-server
     if [ `which mysql` ]
     then
+        echo "Creando la base de datos usuario..."
+        mysql -u usuario -e < MySQL.SQL
         verde "MySQL se ha instalado satisfactoriamente..."
     else
         rojo "Ha ocurrido un error al instalar MySQL..."
@@ -50,3 +52,46 @@ do
     grupo=`echo $vergrupos | awk -F " : " '{ print $2 }'`
     echo "$id:$nombre:$grupo" >> usuarios.txt
 done
+
+if [ -f ./usuarios.txt ]
+then
+    verde "Se han exportado correctamente los usuarios en [`pwd`]"
+else
+    rojo "Ha ocurrido un problema al exportar los usuarios..."
+    exit 0
+fi
+
+echo "Creando las consultas SQL..."
+if [ -f ./usuarios.SQL ]
+then
+    echo "Existe un fichero previo de importación..."
+    amarillo "Eliminando..."
+    rm usuarios.SQL
+    amarillo "Creando..."
+    touch usuarios.SQL
+    verde "Se ha creado satisfactoriamente..."
+else
+    echo "No existe ningún fichero de importación"
+    amarillo "Creando..."
+    touch usuarios.SQL
+    verde "Se ha creado satisfactoriamente..."
+fi
+
+mysql -u usuario usuarios -e 'SELECT uid FROM usuarios' > consulta.SQL
+
+for fila in $(cat ./usuarios.txt)
+do
+    uidSQL=$(cat ./usuarios.txt | grep $fila | cut -f1 -d ":")
+    usuarioSQL=$(cat ./usuarios.txt | grep $fila | cut -f2 -d ":")
+    grupoSQL=$(cat ./usuarios.txt | grep $fila | cut -f3 -d ":")
+    if grep $uidSQL ./consulta.SQL > /dev/null
+    then
+        amarillo "El usuario $usuarioSQL ya existe en la base de datos..."
+        amarillo "________"
+    else
+        echo "Insertando a $usuarioSQL en la base de datos..."
+        echo "INSERT INTO usuarios VALUES ('$uidSQL','$usuarioSQL','$grupoSQL');" > usuario.SQL
+        mysql -u usuario usuarios < usuario.SQL
+    fi
+done
+
