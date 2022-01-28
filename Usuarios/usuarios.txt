@@ -1,0 +1,6 @@
+jose:users
+nicolas:camaras
+esteban:etalonaje
+ana:camaras
+pepe:sfx
+victor:redaccion
